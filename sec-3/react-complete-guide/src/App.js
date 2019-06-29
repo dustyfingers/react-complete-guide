@@ -25,18 +25,31 @@ class App extends Component {
       ]
     });
   }
+
+  nameChangedHandler = (evt) => {
+    this.setState({
+      persons: [
+        { name: 'Max', age: 86 },
+        { name: evt.target.value, age: 17 },
+        { name: 'Alan', age: 34 },
+        { name: 'Jim', age: 25 }
+      ]
+    });
+  }
+
   render() {
     return (
       <div className="App" >
         <h1>Hi, I'm a react app!</h1>
         <p>This is really working!</p>
-        <button onClick={() => this.switchNameHandler('LOUIE!!!') } >Switch Name</button>
+        <button onClick={() => this.switchNameHandler('LOUIE!!!')} >Switch Name</button>
         <Person
           name={this.state.persons[0].name}
           age={this.state.persons[0].age} />
         <Person
           name={this.state.persons[1].name}
-          age={this.state.persons[1].age} />
+          age={this.state.persons[1].age}
+          changed={this.nameChangedHandler} />
         <Person
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
